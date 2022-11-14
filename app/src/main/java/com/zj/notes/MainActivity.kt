@@ -6,10 +6,8 @@ import androidx.core.view.WindowCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
-import androidx.fragment.app.viewModels
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.zj.model.NoteInfo
-import com.zj.model.NotesDatabase
 import com.zj.notes.databinding.ActivityMainBinding
 
 class MainActivity : FragmentActivity(), NotesListAdapter.NotesItemClickListener {
@@ -20,8 +18,8 @@ class MainActivity : FragmentActivity(), NotesListAdapter.NotesItemClickListener
     private var num = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         onBackPressedDispatcher.addCallback(

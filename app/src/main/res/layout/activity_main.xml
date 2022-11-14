@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sliding_pane_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <!-- The first child view becomes the left pane. When the combined
         desired width (expressed using android:layout_width) would
@@ -24,10 +25,12 @@
 
         <ImageView
             android:id="@+id/image_view"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="50dp" />
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ic_baseline_add_circle_24"
+            android:contentDescription="@string/add_description" />
 
     </FrameLayout>
 
@@ -42,7 +45,6 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="#ff333333"
         tools:layout="@layout/adapter_notes_list" />
 
 </androidx.slidingpanelayout.widget.SlidingPaneLayout>

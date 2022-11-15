@@ -2,15 +2,15 @@ package com.zj.notes
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.zj.model.NoteInfo
 import com.zj.notes.databinding.ActivityMainBinding
 
-class MainActivity : FragmentActivity(), NotesListAdapter.NotesItemClickListener {
+class MainActivity : AppCompatActivity(), NotesListAdapter.NotesItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var notesListAdapter: NotesListAdapter

@@ -3,6 +3,7 @@ package com.zj.notes
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.zj.model.NoteInfo
@@ -21,10 +22,25 @@ class EditNotesViewModel(application: Application) : AndroidViewModel(applicatio
 
     val noteInfoLiveData = MutableLiveData<NoteInfo?>()
 
+    val noteState: LiveData<NotesState> get() = _noteState
+
+    private val _noteState = MutableLiveData<NotesState>()
+
+    fun setNotesState(notesState: NotesState) {
+        if (notesState == _noteState.value) {
+            return
+        }
+        _noteState.postValue(notesState)
+    }
+
     /**
      * 修改
      */
-    fun updateNoteInfo(noteInfo: NoteInfo) {
+    fun updateNoteInfo(noteInfo: NoteInfo?) {
+        if (noteInfo == null) {
+            Log.w(TAG, "updateNoteInfo: noteInfo is null")
+            return
+        }
         viewModelScope.launch(Dispatchers.IO) {
             val update = noteDao.update(noteInfo)
             Log.d(TAG, "updateNoteInfo: $update")
@@ -59,3 +75,11 @@ class EditNotesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 }
+
+sealed class NotesState
+
+// 编辑状态
+object EditNotesState : NotesState()
+
+// 普通状态
+object NormalNotesState : NotesState()

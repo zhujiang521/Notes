@@ -15,8 +15,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "note_info")
 data class NoteInfo(
     @PrimaryKey(autoGenerate = true) val uid: Int = 0,
-    @ColumnInfo(name = "create_time") val createTime: Long = System.currentTimeMillis(),
-    @ColumnInfo(name = "modified_time") val modifiedTime: Long = System.currentTimeMillis(),
-    @ColumnInfo(name = "title") val title: String = "Default",
-    @ColumnInfo(name = "data") val data: String = "Default Data"
+    @ColumnInfo(name = "create_time") var createTime: Long = System.currentTimeMillis(),
+    @ColumnInfo(name = "modified_time") var modifiedTime: Long = System.currentTimeMillis(),
+    @ColumnInfo(name = "title") var title: String = "Default",
+    @ColumnInfo(name = "data") var data: String = "Default Data"
 )
